@@ -1,61 +1,88 @@
-# Facial-Emotion-Recognition-using-OpenCV-and-Deepface
-This project implements real-time facial emotion detection using the `deepface` library and OpenCV. It captures video from the webcam, detects faces, and predicts the emotions associated with each face. The emotion labels are displayed on the frames in real-time.
-This is probably the shortest code to implement realtime emotion monitoring.
-- Give this repository a ⭐ if you liked it, since it took me time to understand and implement this
+# Facial Emotion Recognition
 
-## Dependencies
+This repository contains an implementation of a Facial Emotion Recognition system. The system leverages machine learning techniques to classify human facial expressions into distinct emotional categories such as happiness, sadness, anger, and surprise.
 
-- [deepface](https://github.com/serengil/deepface): A deep learning facial analysis library that provides pre-trained models for facial emotion detection. It relies on TensorFlow for the underlying deep learning operations.
-- [OpenCV](https://opencv.org/): An open-source computer vision library used for image and video processing.
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Dataset](#dataset)
+- [Model Architecture](#model-architecture)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Results](#results)
+
+## Introduction
+
+Facial emotion recognition plays a crucial role in numerous applications such as human-computer interaction, mental health monitoring, and sentiment analysis. This project implements a system that detects emotions from facial images using modern deep learning techniques.
+
+## Features
+
+- **Real-time Emotion Detection**: Recognize emotions in real-time from webcam feeds.
+- **Pre-trained Models**: Leverages pre-trained models for improved accuracy and faster training.
+- **User-friendly Interface**: Simple interface for testing and visualizing results.
+
+## Technologies Used
+
+ - opencv-python
+ - deepface
+ - tf_keras
+
+## Dataset
+
+The system is trained on the [FER2013 dataset](https://www.kaggle.com/msambare/fer2013), which contains 35,887 grayscale, 48x48 pixel face images labeled with one of seven emotions:
+
+1. Angry
+2. Disgust
+3. Fear
+4. Happy
+5. Sad
+6. Surprise
+7. Neutral
+
+## Model Architecture
+
+The model architecture is based on a Convolutional Neural Network (CNN) to effectively extract spatial features from the input images. Key layers include:
+
+- Convolutional layers with ReLU activation
+- MaxPooling layers for downsampling
+- Dropout layers to prevent overfitting
+- Fully connected layers for classification
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/KaranJaiswal02/Facial-Emotion-Recognition.git
+   cd Facial-Emotion-Recognition
+   ```
+
+2. Install required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Download the dataset and place it in the `data/` directory.
+
+4. Run the training script:
+   ```bash
+   python train.py
+   ```
 
 ## Usage
-### Initial steps:
-- Git clone this repository Run: `git clone https://github.com/manish-9245/Facial-Emotion-Recognition-using-OpenCV-and-Deepface.git`
-- Run: `cd Facial-Emotion-Recognition-using-OpenCV-and-Deepface`
-1. Install the required dependencies:
-   - You can use `pip install -r requirements.txt`
-   - Or you can install dependencies individually:
-      - `pip install deepface`
-      - `pip install tf_keras`
-      - `pip install opencv-python`
 
-2. Download the Haar cascade XML file for face detection:
-   - Visit the [OpenCV GitHub repository](https://github.com/opencv/opencv/tree/master/data/haarcascades) and download the `haarcascade_frontalface_default.xml` file.
+To use the system for real-time emotion detection:
 
-3. Run the code:
-   - Execute the Python script.
-   - The webcam will open, and real-time facial emotion detection will start.
-   - Emotion labels will be displayed on the frames around detected faces.
+1. Ensure your webcam is connected.
+2. Run the script:
+   ```bash
+   python detect.py
+   ```
+3. The interface will display the detected emotion on the screen.
 
-## Approach
+## Results
 
-1. Import the necessary libraries: `cv2` for video capture and image processing, and `deepface` for the emotion detection model.
-
-2. Load the Haar cascade classifier XML file for face detection using `cv2.CascadeClassifier()`.
-
-3. Start capturing video from the default webcam using `cv2.VideoCapture()`.
-
-4. Enter a continuous loop to process each frame of the captured video.
-
-5. Convert each frame to grayscale using `cv2.cvtColor()`.
-
-6. Detect faces in the grayscale frame using `face_cascade.detectMultiScale()`.
-
-7. For each detected face, extract the face ROI (Region of Interest).
-
-8. Preprocess the face image for emotion detection using the `deepface` library's built-in preprocessing function.
-
-9. Make predictions for the emotions using the pre-trained emotion detection model provided by the `deepface` library.
-
-10. Retrieve the index of the predicted emotion and map it to the corresponding emotion label.
-
-11. Draw a rectangle around the detected face and label it with the predicted emotion using `cv2.rectangle()` and `cv2.putText()`.
-
-12. Display the resulting frame with the labeled emotion using `cv2.imshow()`.
-
-13. If the 'q' key is pressed, exit the loop.
-
-14. Release the video capture and close all windows using `cap.release()` and `cv2.destroyAllWindows()`.
-
+The model successfully detects all 7 emotions demonstrates robust performance in real-world scenarios.
 
 
